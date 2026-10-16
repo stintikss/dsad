@@ -1,0 +1,22 @@
+# Необязательно: Blueprint для Render. Если создаёте сервис вручную — файл можно игнорировать.
+services:
+  - type: web
+    name: unu-monitor-telegram
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: TZ
+        value: Europe/Moscow
+      - key: UNU_USER_ID
+        value: "4436590"
+      - key: BOT_TOKEN
+        sync: false
+      - key: UNU_COOKIE
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
